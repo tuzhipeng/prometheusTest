@@ -1,0 +1,14 @@
+{{ define "email.html" }}
+{{ range $i, $alert :=.Alerts }}
+========监控报警==========<br>
+告警状态：{{   .Status }}<br>
+告警级别：{{ $alert.Labels.severity }}<br>
+告警类型：{{ $alert.Labels.alertname }}<br>
+告警应用：{{ $alert.Annotations.summary }}<br>
+告警主机：{{ $alert.Labels.instance }}<br>
+告警详情：{{ $alert.Annotations.description }}<br>
+触发阀值：{{ $alert.Annotations.value }}<br>
+告警时间：{{ $alert.StartsAt.Format "2006-01-02 15:04:05" }}<br>
+========end=============<br>
+{{ end }}
+{{ end }}
